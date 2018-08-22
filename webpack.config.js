@@ -8,6 +8,11 @@ module.exports = {
         filename: 'webpack-bundle.js',
         publicPath: 'build'
     },
+    devServer: {
+        proxy: {
+            '/': 'http://localhost:3000'
+        }
+    },
     module: {
         rules: [
             {

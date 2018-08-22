@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon ./server/server.js",
     "webpack": "webpack",
-    "dev": "webpack-dev-server"
+    "webpack:dev": "webpack-dev-server",
+    "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
+    "dev": "concurrently \"npm run start\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -31,10 +33,14 @@
   },
   "homepage": "https://github.com/slaglebagel17/poop-scoop#readme",
   "dependencies": {
+    "axios": "^0.18.0",
+    "concurrently": "^3.6.1",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "mongoose": "^5.2.9",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "react-leaflet": "^2.0.1",
     "webpack": "^4.17.0",
     "webpack-cli": "^3.1.0"
   },

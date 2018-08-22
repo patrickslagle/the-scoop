@@ -1,0 +1,4 @@
+# uncomment the below lines if you don't want to push .env
+
+# node_modules
+# .env
