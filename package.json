@@ -37,10 +37,12 @@
     "concurrently": "^3.6.1",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
+    "mapbox-gl": "^0.48.0",
     "mongoose": "^5.2.9",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-leaflet": "^2.0.1",
+    "react-map-gl": "^3.3.4",
+    "react-mapbox-gl": "^3.8.0",
     "webpack": "^4.17.0",
     "webpack-cli": "^3.1.0"
   },

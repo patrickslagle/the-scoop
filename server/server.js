@@ -5,7 +5,6 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser'); //to access req.body
 const mongoose = require('mongoose');
-const cors = require('cors')
 
 //connect to database
 mongoose.connect(process.env.MONGO_URL);
@@ -14,7 +13,6 @@ mongoose.connect(process.env.MONGO_URL);
 const app = express();
 app.use(bodyParser.json())
 app.use(express.static(__dirname + './../'))
-app.use(cors())
 
 //create server routers
 const router = require('./router');

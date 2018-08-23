@@ -1,4 +1,6 @@
 const Test = require('../database/mongoose');
+const Bathrooms = require('../database/Bathrooms');
+
 
 module.exports = function(app){
 
@@ -21,5 +23,22 @@ module.exports = function(app){
           res.status(200).send(item); 
       })
   })
+
+  app.get('/loadBathrooms', (req, res) => {
+    Bathrooms.find({}, (err, bathrooms) => {
+      if (err) return res.status(500).send(err);
+      res.status(200).send(bathrooms); 
+    })
+  })
+
+  app.post('/addBathroom', (req, res) => {
+    const bathroom = req.body.newBathroom; 
+    console.log('adding a bathroom, req.body,', bathroom)
+    Bathrooms.create(bathroom, function(err, data){
+      if (err) return err; 
+      res.status(200).send(data)
+    })
+
+})
 
 }

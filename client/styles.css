@@ -1,29 +1,41 @@
-*{
-    background-color: grey; 
+.app-container{
+    display: flex;
+    flex-direction: column; 
+    align-items: stretch;
 }
 
-.tilelayer-container {
-    border: 5px solid purple; 
-    
+header{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(65, 163, 62);
+    font-size: 25px;
+    font-weight: bold; 
+    color: white; 
+    border: 5px solid white; 
 }
 
-#root{
-    border: 5px solid blue; 
-    width: 50%
-    
+.header-pic{
+    display: flex;
+    justify-content: center;
+    align-items: stretch; 
+    padding: 3%; 
+    background-color: snow;  
+    border: 5px solid white; 
+
 }
 
-.div-container{
-    border: 5px solid green; 
-    
+img{
+    display: flex; 
+    width: 100%; 
 }
 
 .map-container{
-    border: 5px solid pink; 
-    
+    background-color: snow; 
+    height: 70%; 
+    border: 5px solid white; 
 }
 
-.marker-container{
-    border: 5px solid red; 
-    
+input{
+    margin: 4px;
+    font-size: 30px;  
 }
