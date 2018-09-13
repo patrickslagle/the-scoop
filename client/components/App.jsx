@@ -1,14 +1,10 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import Mapbox from './Mapbox.jsx'
 import Header from './Header.jsx'
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-        test: 'test',
-    }
   }
 
   render(){
