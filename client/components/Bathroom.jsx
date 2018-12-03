@@ -3,7 +3,7 @@ import ReactMapboxGl, { Marker } from 'react-mapbox-gl';
 import styled from 'styled-components';
 
 
-const Bathroom = (props) => {
+const Bathroom = ({ coordinate }) => {
   const Mark = styled.div`
   background-color: #e74c3c;
   border-radius: 50%;
@@ -14,7 +14,7 @@ const Bathroom = (props) => {
   return (
     <div>
       <Marker
-        coordinates={props.coordinate}
+        coordinates={coordinate}
         anchor="bottom"
       >
         <Mark />
