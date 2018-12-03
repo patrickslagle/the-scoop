@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import Mapbox from './Mapbox.jsx'
-import Header from './Header.jsx'
+import React, { Component } from 'react';
+import Mapbox from './Mapbox.jsx';
+import Header from './Header.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -17,4 +17,4 @@ class App extends Component {
   }
 }
 
-export default App; 
+export default App;
