@@ -98,7 +98,7 @@ class Mapbox extends Component {
     }
     return (
       <div className="map-container">
-        <Map 
+        <Map
           className="map-container"
           onClick={this.bathroomPopup}
           style="mapbox://styles/mapbox/streets-v9"
