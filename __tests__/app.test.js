@@ -23,3 +23,8 @@ test('Bathroom component renders properly', () => {
   const wrapper = shallow(<Bathroom />);
   expect(wrapper).toMatchSnapshot();
 });
+
+test('Header component renders properly', () => {
+  const wrapper = shallow(<Header />);
+  expect(wrapper).toMatchSnapshot();
+});
