@@ -28,3 +28,8 @@ test('Header component renders properly', () => {
   const wrapper = shallow(<Header />);
   expect(wrapper).toMatchSnapshot();
 });
+
+test('BathroomPopup component renders properly', () => {
+  const wrapper = shallow(<BathroomPopup />);
+  expect(wrapper).toMatchSnapshot();
+});

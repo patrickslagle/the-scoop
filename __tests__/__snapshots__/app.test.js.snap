@@ -19,6 +19,56 @@ exports[`Bathroom component renders properly 1`] = `
 </div>
 `;
 
+exports[`BathroomPopup component renders properly 1`] = `
+<div>
+  <Popup
+    anchor="bottom"
+    className="popup"
+    offset={
+      Object {
+        "bottom": Array [
+          0,
+          0,
+        ],
+        "bottom-left": Array [
+          0,
+          0,
+        ],
+        "bottom-right": Array [
+          0,
+          0,
+        ],
+      }
+    }
+  >
+    <h1>
+      Add Bathroom
+    </h1>
+    <form>
+      <input
+        placeholder="Bathroom Location"
+        type="text"
+      />
+      <br />
+      <input
+        placeholder="Bathroom URL Pic"
+        type="text"
+      />
+      <br />
+      <input
+        placeholder="Poop Review"
+        type="text"
+      />
+      <br />
+      <input
+        type="submit"
+        value="Submit"
+      />
+    </form>
+  </Popup>
+</div>
+`;
+
 exports[`Header component renders properly 1`] = `
 <div>
   <header>
