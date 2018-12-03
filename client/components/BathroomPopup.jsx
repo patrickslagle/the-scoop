@@ -8,7 +8,7 @@ const BathroomPopup = ({
   bathroomLocation,
   bathroomPic,
   handleChange,
-  review
+  review,
 }) => (
   <div>
     <Popup
