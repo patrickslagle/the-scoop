@@ -45,18 +45,18 @@ class Mapbox extends Component {
   }
 
   bathroomPopup(map, evt) {
+    const { popup } = this.state;
+    const newBathroom = Object.assign(popup);
     const coordinate = [evt.lngLat.lng, evt.lngLat.lat];
-    const newBathroom = this.state.popup;
-    this.state.popup.coordinate = coordinate;
-    this.setState({popup: newBathroom});
+    newBathroom.coordinate = coordinate;
+    this.setState({ popup: newBathroom });
   }
 
   // submitting bathroom info
   submitHandler(event) {
     event.preventDefault();
-    const newBathroom = this.state.popup
-    const bathrooms = this.state.bathrooms
-    axios.post('/addBathroom', {newBathroom})
+    const { popup, bathrooms } = this.state;
+    axios.post('/addBathroom', { popup })
       .then((response) => {
         bathrooms.push(response.data);
         this.setState({ bathrooms });
@@ -65,39 +65,34 @@ class Mapbox extends Component {
 
   // if text is entered into a popup
   handleChange(event) {
+    const { tempPopup } = this.state.popup;
     if (event.target.placeholder === 'Bathroom Location') {
-      const tempPopup = this.state.popup
-      tempPopup.bathroomLocation = event.target.value; 
-      this.setState({popup: tempPopup})
+      tempPopup.bathroomLocation = event.target.value;
+    } else if (event.target.placeholder === 'Bathroom URL Pic') {
+      tempPopup.bathroomPic = event.target.value;
+    } else if (event.target.placeholder === 'Poop Review') {
+      tempPopup.review = event.target.value;
     }
-    else if (event.target.placeholder === 'Bathroom URL Pic') {
-      const tempPopup = this.state.popup;
-      tempPopup.bathroomPic = event.target.value; 
-      this.setState({popup: tempPopup});
-    }
-    else if (event.target.placeholder === 'Poop Review') {
-      const tempPopup = this.state.popup;
-      tempPopup.review = event.target.value; 
-      this.setState({popup: tempPopup})
-    }
+    this.setState({ popup: tempPopup });
   }
 
 
   render() {
-    const { viewport } = this.state;
-    const bathrooms = this.state.bathrooms.map(bathroom => (
+    const { bathrooms } = this.state;
+    const { coordinate, bathroomLocation, review, bathroomPic } = this.state.popup;
+    const renderedBathrooms = bathrooms.map(bathroom => (
       <Bathroom key={bathroom._id} coordinate={bathroom.coordinate} />
     ));
     let newPopup;
-    if (this.state.popup.coordinate) {
+    if (coordinate) {
       newPopup = (
         <BathroomPopup
-          coordinate={this.state.popup.coordinate}
+          coordinate={coordinate}
           submitHandler={this.submitHandler}
           handleChange={this.handleChange}
-          bathroomLocation={this.state.popup.bathroomLocation}
-          review={this.state.popup.review}
-          bathroomPic={this.state.popup.bathroomPic}
+          bathroomLocation={bathroomLocation}
+          review={review}
+          bathroomPic={bathroomPic}
         />
       );
     }
@@ -114,7 +109,7 @@ class Mapbox extends Component {
           }}
         >
           {newPopup}
-          {bathrooms}
+          {renderedBathrooms}
         </Map>
       </div>
     );
