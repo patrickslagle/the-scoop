@@ -10,12 +10,12 @@ import BathroomPopup from './BathroomPopup.jsx';
 const TOKEN = 'pk.eyJ1Ijoic2xhZ2xlYmFnZWwxNyIsImEiOiJjamw1ZHgxc3MwcmlsM3FxbHIzeml1bDFlIn0.MgcX0bSt1txgmOR-HOGlqA';
 
 const Map = ReactMapboxGl({
-  accessToken: TOKEN
+  accessToken: TOKEN,
 });
 
-class Mapbox extends Component{
-  constructor(props){
-    super(props)
+class Mapbox extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       viewport: {
         latitude: 37.785164,
@@ -27,31 +27,28 @@ class Mapbox extends Component{
         height: 500,
       },
       popup: {
-        bathroomLocation: "",
-        review: "",
-        bathroomPic: "",
-        coordinate: null
+        bathroomLocation: '',
+        review: '',
+        bathroomPic: '',
+        coordinate: null,
       },
-      bathrooms: []
-    }
-    this.submitHandler = this.submitHandler.bind(this)
-    this.handleChange = this.handleChange.bind(this)
-    this.bathroomPopup = this.bathroomPopup.bind(this)
+      bathrooms: [],
+    };
+    this.submitHandler = this.submitHandler.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.bathroomPopup = this.bathroomPopup.bind(this);
   }
 
-  componentDidMount(){
-    axios.get('/loadBathrooms').then(bathrooms => {
-        console.log('loaded bathrooms ', bathrooms.data);
-        this.setState({bathrooms: bathrooms.data})
-      })
+  componentDidMount() {
+    axios.get('/loadBathrooms')
+      .then(bathrooms => this.setState({ bathrooms: bathrooms.data }))
   }
-  
-  bathroomPopup(map, evt){
-    const coordinate = [evt.lngLat.lng, evt.lngLat.lat]
-    const newBathroom = this.state.popup
-    this.state.popup.coordinate = coordinate
-    this.setState({popup: newBathroom})    
-    console.log(this.state.popup)
+
+  bathroomPopup(map, evt) {
+    const coordinate = [evt.lngLat.lng, evt.lngLat.lat];
+    const newBathroom = this.state.popup;
+    this.state.popup.coordinate = coordinate;
+    this.setState({popup: newBathroom});
   }
 
   //submitting bathroom info
