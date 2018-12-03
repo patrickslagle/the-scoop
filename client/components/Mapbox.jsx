@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import ReactMapboxGl from "react-mapbox-gl";
-import axios from 'axios'
-import Bathroom from './Bathroom.jsx'
-import BathroomPopup from './BathroomPopup.jsx'
-//AWESOME map examples below
-//http://alex3165.github.io/react-mapbox-gl/demos
-//https://www.mapbox.com/mapbox-gl-js/api/
+import React, { Component } from 'react';
+import ReactMapboxGl from 'react-mapbox-gl';
+import axios from 'axios';
+import Bathroom from './Bathroom.jsx';
+import BathroomPopup from './BathroomPopup.jsx';
+// AWESOME map examples below
+// http://alex3165.github.io/react-mapbox-gl/demos
+// https://www.mapbox.com/mapbox-gl-js/api/
 
 const TOKEN = 'pk.eyJ1Ijoic2xhZ2xlYmFnZWwxNyIsImEiOiJjamw1ZHgxc3MwcmlsM3FxbHIzeml1bDFlIn0.MgcX0bSt1txgmOR-HOGlqA';
 
