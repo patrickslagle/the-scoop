@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactMapboxGl, { Marker } from 'react-mapbox-gl';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 
 const Bathroom = ({ coordinate }) => {
@@ -24,3 +25,7 @@ const Bathroom = ({ coordinate }) => {
 };
 
 export default Bathroom;
+
+Bathroom.propTypes = {
+  coordinate: PropTypes.arrayOf(PropTypes.number).isRequired,
+};
