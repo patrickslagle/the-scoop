@@ -41,7 +41,7 @@ class Mapbox extends Component {
 
   componentDidMount() {
     axios.get('/loadBathrooms')
-      .then(bathrooms => this.setState({ bathrooms: bathrooms.data }))
+      .then(bathrooms => this.setState({ bathrooms: bathrooms.data }));
   }
 
   bathroomPopup(map, evt) {
@@ -51,77 +51,74 @@ class Mapbox extends Component {
     this.setState({popup: newBathroom});
   }
 
-  //submitting bathroom info
-  submitHandler(event){
+  // submitting bathroom info
+  submitHandler(event) {
     event.preventDefault();
     const newBathroom = this.state.popup
     const bathrooms = this.state.bathrooms
-    axios.post('/addBathroom', {newBathroom}).then(response => {
-      console.log('in the axios post, this is response.data', response.data)
-      // this.setState({bathrooms: bathrooms.data})
-      bathrooms.push(response.data);
-      this.setState({bathrooms: bathrooms})
-    })
+    axios.post('/addBathroom', {newBathroom})
+      .then((response) => {
+        bathrooms.push(response.data);
+        this.setState({ bathrooms });
+      });
   }
 
-  //if text is entered into a popup
-  handleChange(event){
-    if (event.target.placeholder === "Bathroom Location"){
+  // if text is entered into a popup
+  handleChange(event) {
+    if (event.target.placeholder === 'Bathroom Location') {
       const tempPopup = this.state.popup
       tempPopup.bathroomLocation = event.target.value; 
       this.setState({popup: tempPopup})
-      console.log(event.target.value)
     }
-    else if (event.target.placeholder === "Bathroom URL Pic"){
-      const tempPopup = this.state.popup
+    else if (event.target.placeholder === 'Bathroom URL Pic') {
+      const tempPopup = this.state.popup;
       tempPopup.bathroomPic = event.target.value; 
-      this.setState({popup: tempPopup})
-      console.log(event.target.value)
-
+      this.setState({popup: tempPopup});
     }
-    else if (event.target.placeholder === "Poop Review"){
-      const tempPopup = this.state.popup
+    else if (event.target.placeholder === 'Poop Review') {
+      const tempPopup = this.state.popup;
       tempPopup.review = event.target.value; 
       this.setState({popup: tempPopup})
-      console.log(event.target.value)
     }
   }
 
 
-  render(){
-    const {viewport} = this.state;
-    const bathrooms = this.state.bathrooms.map(bathroom => {
-        return <Bathroom key={bathroom._id} coordinate={bathroom.coordinate}/>
-    })
-    let newPopup; 
+  render() {
+    const { viewport } = this.state;
+    const bathrooms = this.state.bathrooms.map(bathroom => (
+      <Bathroom key={bathroom._id} coordinate={bathroom.coordinate} />
+    ));
+    let newPopup;
     if (this.state.popup.coordinate) {
-      newPopup = <BathroomPopup 
-                    coordinate={this.state.popup.coordinate}
-                    submitHandler={this.submitHandler}
-                    handleChange={this.handleChange}
-                    bathroomLocation={this.state.popup.bathroomLocation}
-                    review={this.state.popup.review}
-                    bathroomPic={this.state.popup.bathroomPic}
-                    />
+      newPopup = (
+        <BathroomPopup
+          coordinate={this.state.popup.coordinate}
+          submitHandler={this.submitHandler}
+          handleChange={this.handleChange}
+          bathroomLocation={this.state.popup.bathroomLocation}
+          review={this.state.popup.review}
+          bathroomPic={this.state.popup.bathroomPic}
+        />
+      );
     }
-    return(
+    return (
       <div className="map-container">
-        <Map className="map-container"
+        <Map 
+          className="map-container"
           onClick={this.bathroomPopup}
-    
           style="mapbox://styles/mapbox/streets-v9"
           containerStyle={{
-            height: "60vh",
-            width: "92vw",
-            margin: "2.8%",
+            height: '60vh',
+            width: '92vw',
+            margin: '2.8%',
           }}
-          >
+        >
           {newPopup}
           {bathrooms}
         </Map>
       </div>
-    )
+    );
   }
 }
 
-export default Mapbox
+export default Mapbox;
