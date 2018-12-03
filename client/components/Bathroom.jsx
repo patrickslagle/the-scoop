@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactMapboxGl, { Marker } from "react-mapbox-gl";
+import ReactMapboxGl, { Marker } from 'react-mapbox-gl';
 import styled from 'styled-components';
 
 
