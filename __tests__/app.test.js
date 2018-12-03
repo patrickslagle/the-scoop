@@ -33,3 +33,8 @@ test('BathroomPopup component renders properly', () => {
   const wrapper = shallow(<BathroomPopup />);
   expect(wrapper).toMatchSnapshot();
 });
+
+test('Mapbox component renders properly', () => {
+  const wrapper = shallow(<BathroomPopup />);
+  expect(wrapper).toMatchSnapshot();
+});
