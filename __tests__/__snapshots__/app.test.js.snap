@@ -8,3 +8,13 @@ exports[`App component renders properly 1`] = `
   <Mapbox />
 </div>
 `;
+
+exports[`Bathroom component renders properly 1`] = `
+<div>
+  <Marker
+    anchor="bottom"
+  >
+    <styled.div />
+  </Marker>
+</div>
+`;
