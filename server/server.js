@@ -1,22 +1,19 @@
-//the below line takes whats in the .env file and 
-//stores it in process.env
 require('dotenv').config();
 
 const express = require('express');
-const bodyParser = require('body-parser'); //to access req.body
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const router = require('./router');
 
-//connect to database
+// connect to database
 mongoose.connect(process.env.MONGO_URL);
 
-//create express server
+// create express server
 const app = express();
-app.use(bodyParser.json())
-app.use(express.static(__dirname + './../'))
+app.use(bodyParser.json());
+app.use(express.static(__dirname + './../'));
 
-//create server routers
-const router = require('./router');
+// create server routers
 router(app);
 
-//REMEMBER, the dev server listen is different. It will not accept get and post requests. 
-app.listen(3000, () => console.log('listening on 3000 yo buddy'))
+app.listen(3000, () => console.log('listening on 3000 yo buddy'));
